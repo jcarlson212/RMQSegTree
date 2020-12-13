@@ -68,11 +68,11 @@ class RMQ_SegTree {
         RMQ_SegTree(vector<int> input_array, bool is_max=false){
             this->is_max = is_max;
             this->input_array = input_array;
-            seg_tree = vector<int>(2*input_array.size(), 0);
+            seg_tree = vector<int>(4*input_array.size()+1, 0);
             build_seg_tree(0, 0, this->input_array.size()-1);
         }
 
-        //O(2*n) time complexity (n + n/2 + ... = 2*n). O(log(n)) space complexity for call stack. This could be reduced to O(1) by making it iterative 
+        //O(n) time complexity. O(log(n)) space complexity for call stack. This could be reduced to O(1) by making it iterative 
         int build_seg_tree(int seg_index, int left_index, int right_index){
             if(right_index == left_index){
                 this->seg_tree[seg_index] = this->input_array[left_index];
